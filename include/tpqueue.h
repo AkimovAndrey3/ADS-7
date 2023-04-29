@@ -8,21 +8,21 @@
 template <typename T>
 class TPQueue {
  public:
-   TPQueue() : head(nullptr), tail(nullptr) { }
-   ~TPQueue();
-   void push(const T&);
-   T& pop();
-   void print();
+  TPQueue() : head(nullptr), tail(nullptr) { }
+  ~TPQueue();
+  void push(const T&);
+  T& pop();
+  void print();
 
  private:
-   struct Item {
-     T data;
-     Item* next;
-     Item* previous;
-   };
-   Item* head;
-   Item* tail;
-   TPQueue::Item create(const T&);
+  struct Item {
+    T data;
+    Item* next;
+    Item* previous;
+  };
+  Item* head;
+  Item* tail;
+  TPQueue::Item* create(const T&);
 };
 
 template <typename T>
@@ -47,8 +47,7 @@ void TPQueue<T>::push(const T& arg) {
   if (head == nullptr) {
     head = create(arg);
     tail = head;
-  }
-  else if (tail->data.prior >= arg.prior) {
+  } else if (tail->data.prior >= arg.prior) {
     if (tail->data.ch == arg.ch) {
       tail->data = arg;
     } else {
@@ -56,8 +55,7 @@ void TPQueue<T>::push(const T& arg) {
       tail->next->previous = tail;
       tail = tail->next;
     }
-  }
-  else if (head == tail) {
+  } else if (head == tail) {
     tail->previous = create(arg);
     head = tail->previous;
     head->next = tail;
