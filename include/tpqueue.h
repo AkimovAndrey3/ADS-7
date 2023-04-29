@@ -11,7 +11,7 @@ class TPQueue {
   TPQueue() : head(nullptr), tail(nullptr) { }
   ~TPQueue();
   void push(const T&);
-  T& pop();
+  T pop();
   void print();
 
  private:
