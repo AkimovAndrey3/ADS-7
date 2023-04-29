@@ -60,7 +60,7 @@ void TPQueue<T>::push(const T& arg) {
     head = tail->previous;
     head->next = tail;
   } else {
-    Item* temp = tail; 
+    Item* temp = tail;
     while (temp != head && temp->data.prior < arg.prior) {
       temp = temp->previous;
     }
@@ -81,7 +81,7 @@ void TPQueue<T>::push(const T& arg) {
 }
 
 template <typename T>
-T& TPQueue<T>::pop() {
+T TPQueue<T>::pop() {
   if (!head) {
     throw std::string("Empty!");
   } else {
